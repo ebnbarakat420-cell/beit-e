@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beit-e | Cinematic Storyboard</title>
+    <style>
+        :root { --gold: #e8b923; --dark: #0b1d12; }
+        body { background: #000; color: white; font-family: 'Segoe UI', sans-serif; margin: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; height: 100vh; }
+        
+        .video-container { width: 90%; max-width: 400px; height: 75vh; border: 3px solid var(--gold); border-radius: 25px; position: relative; overflow: hidden; background: var(--dark); }
+        
+        /* شريط الوقت */
+        .progress-bar { position: absolute; bottom: 0; height: 6px; background: var(--gold); width: 0%; animation: runTime 24s linear infinite; }
+        @keyframes runTime { from { width: 0%; } to { width: 100%; } }
+
+        /* المشاهد */
+        .scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 25px; opacity: 0; transform: scale(1.1); animation: fadeScene 4s infinite; }
+        
+        /* توقيت المشاهد (كل 4 ثواني مشهد) */
+        .scene:nth-child(1) { animation-delay: 0s; }
+        .scene:nth-child(2) { animation-delay: 4s; }
+        .scene:nth-child(3) { animation-delay: 8s; }
+        .scene:nth-child(4) { animation-delay: 12s; }
+        .scene:nth-child(5) { animation-delay: 16s; }
+        .scene:nth-child(6) { animation-delay: 20s; }
+
+        @keyframes fadeScene {
+            10%, 90% { opacity: 1; transform: scale(1); }
+            0%, 100% { opacity: 0; transform: scale(1.1); }
+        }
+
+        h2 { color: var(--gold); font-size: 22px; }
+        p { font-size: 16px; color: #ddd; }
+        
+        .play-btn { position: absolute; z-index: 10; background: var(--gold); border: none; padding: 10px 20px; border-radius: 50px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <button class="play-btn" onclick="startVideo(this)">▶ تشغيل العرض</button>
+
+    <div class="video-container">
+        <div class="progress-bar"></div>
+        
+        <div class="scene"><h2>🌙 مشهد 1</h2><p>افتتاحية رمضانية بلمسة "بيت منزلي"</p></div>
+        <div class="scene"><h2>📦 مشهد 2</h2><p>ترتيب الصناديق الفاخرة LUX</p></div>
+        <div class="scene"><h2>🍽️ مشهد 3</h2><p>تجهيز مائدة الإفطار المثالية</p></div>
+        <div class="scene"><h2>✨ مشهد 4</h2><p>جودة التفاصيل في كل قطعة</p></div>
+        <div class="scene"><h2>🛒 مشهد 5</h2><p>اطلب الآن واستعد لرمضان</p></div>
+        <div class="scene"><h2>📞 مشهد 6</h2><p>تواصل معنا: 0100000000</p></div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function startVideo(btn) {
+            document.getElementById('bgMusic').play();
+            btn.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
